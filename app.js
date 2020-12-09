@@ -1,7 +1,7 @@
 let gameOver = false;
 let currentPlayer = 1;
-const playerOne = [];
-const playerTwo = [];
+let playerOne = [];
+let playerTwo = [];
 
 const winningCombos = [
   [0, 1, 2],
@@ -51,8 +51,14 @@ const claimSquare = (e, player) => {
   }
 };
 
+const resetPlayers = () => {
+  playerOne = [];
+  playerTwo = [];
+};
+
 const startGame = () => {
   gameOver = false;
+  resetPlayers();
   createGrid();
 };
 
