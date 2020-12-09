@@ -1,0 +1,31 @@
+h1 {
+  text-align: center;
+}
+
+button {
+  display: block;
+  margin: 0 auto;
+}
+
+#grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  max-width: 600px;
+  margin: 70px auto;
+  background-color: #cccccc;
+}
+
+#grid > div {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-align: center;
+  -webkit-box-align: center;
+  align-items: center;
+  justify-content: center;
+
+  width: 200px;
+  height: 200px;
+  border: 2px solid #fff;
+}
