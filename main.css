@@ -1,3 +1,11 @@
+html,
+body {
+  top: 0;
+  left: 0;
+  padding: 0;
+  margin: 0;
+}
+
 body {
   display: grid;
   grid-template-columns: 1fr 5fr 1fr;
@@ -52,4 +60,39 @@ button {
   width: 200px;
   height: 200px;
   border: 2px solid #fff;
+}
+
+@media screen and (max-width: 575px) {
+  html {
+    height: 100vh;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  h1 {
+    font-size: 16px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  #scoreboard-one,
+  #scoreboard-two {
+    min-height: 80px;
+  }
+
+  #grid {
+    width: 100%;
+    margin: 10px auto;
+  }
+
+  #grid > div {
+    width: auto;
+    height: auto;
+    padding: 33.33%;
+  }
 }

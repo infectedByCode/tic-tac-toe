@@ -23,6 +23,7 @@
     for (let i = 0; i < 9; i++) {
       const el = document.createElement('div');
       el.id = i;
+      el.textContent = '_';
       el.addEventListener('click', (e) => claimSquare(e, currentPlayer));
       grid.appendChild(el);
     }
