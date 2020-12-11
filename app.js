@@ -3,6 +3,8 @@
   let currentPlayer = 1;
   let playerOne = [];
   let playerTwo = [];
+  const santa = String.fromCodePoint(0x1f385);
+  const pumpkin = String.fromCodePoint(0x1f383);
   const textDisplay = document.querySelector('#text-display');
 
   const winningCombos = [
@@ -23,7 +25,7 @@
     for (let i = 0; i < 9; i++) {
       const el = document.createElement('div');
       el.id = i;
-      el.textContent = '_';
+      el.innerHTML = '_';
       el.addEventListener('click', (e) => claimSquare(e, currentPlayer));
       grid.appendChild(el);
     }
@@ -36,26 +38,27 @@
         gameOver = true;
         textDisplay.textContent = `Player ${currentPlayer} is the winner`;
         document.querySelector(`#scoreboard-${currentPlayer === 1 ? 'one' : 'two'} > p`).textContent +=
-          currentPlayer === 1 ? 'X' : 'O';
+          currentPlayer === 1 ? santa : pumpkin;
       }
     });
   };
 
   const claimSquare = (e, player) => {
-    if (gameOver) {
+    if (gameOver || e.target.innerHTML !== '_') {
       return;
     }
-    e.target.textContent = player === 1 ? 'X' : 'O';
     if (currentPlayer === 1) {
+      e.target.innerHTML = santa;
       playerOne.push(Number(e.target.id));
       checkWinningCombo(playerOne);
       currentPlayer = 2;
     } else {
+      e.target.innerHTML = pumpkin;
       playerTwo.push(Number(e.target.id));
       checkWinningCombo(playerTwo);
       currentPlayer = 1;
     }
-    if (playerOne.length + playerTwo.length === 9) {
+    if (playerOne.length + playerTwo.length === 9 && !gameOver) {
       textDisplay.textContent = 'Game was a draw';
       gameOver = true;
       return;
